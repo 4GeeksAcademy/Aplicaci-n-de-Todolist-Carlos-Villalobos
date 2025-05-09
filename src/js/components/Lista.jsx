@@ -24,27 +24,44 @@ const Lista = () => {
         
     }
 
+    const placeHolderDeTarea = () => {
+         return tareas.length === 0 ? "No hay tareas, añadir tareas" : "¿Quieres añadir más tares?";
+    }
+
 
 
 
     return (
-        <div className="text-center">
-            <h1 className="titulo">todo</h1>
-            <input type="text" onChange={entradaTarea} onKeyDown={(e)=> {
+        <div className="lista text-center container row d-flex justify-content-center">
+            <input className="insertar-tareas col-12" type="text" onChange={entradaTarea} onKeyDown={(e)=> {
                 // console.log(e.key);
                 
                 if (e.key == 'Enter') {
                     agregarTarea()
                     
                 }
-            }} value={entrada} placeholder="Cuál es tu nueva tarea?" />
-            <ol>
+            }} value={entrada} placeholder={placeHolderDeTarea()} />
+            <div className="container">
+            <ol className="text-center container row justify-content-center">
                 {tareas.map((tarea, i) => (
-                    <><li key={i}>{tarea}</li><button key={i} type="button" className="btn btn-primary" onClick={() => eliminarTarea(i)}>X</button></>
+                    <div key={i} className="tarea-item-wrapper d-flex align-items-center my-2">
+              <li className="col-11 tareas">{tarea}</li>
+              <button
+                type="button"
+                className="col-1 boton " 
+                onClick={() => eliminarTarea(i)}
+              >
+                X
+              </button>
+            </div>
                 ))}
                 
             </ol>
+                </div>
 
+                <div>
+                    <p>Tareas restantes: {tareas.length}</p>
+                </div>
 
         </div>
     );

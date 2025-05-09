@@ -8,7 +8,7 @@ import Lista from "./Lista";
 const Home = () => {
 	return (
 		<div className="text-center">
-        
+			<h1 className="titulo col-12">todo</h1>
 			<Lista/>
 			
 		</div>
